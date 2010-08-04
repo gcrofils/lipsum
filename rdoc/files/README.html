@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Aug 04 17:02:50 +0200 2010</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../classes/Lipsum.html">Lipsum</a></h1>
+<p>
+Lorem Ipsum ruby generator.
+</p>
+<h2>What is Lorem Ipsum ?</h2>
+<p>
+See <a href="http://www.lipsum.com">www.lipsum.com</a>/
+</p>
+<h3>What is Lorem Ipsum Generator ?</h3>
+<p>
+This program outputs random sentences based on number of paragraphs, words
+or characters.
+</p>
+<p>
+It&#8216;s a ruby library wich only needs <tt>active_record</tt>.
+</p>
+<h2>Installation</h2>
+<p>
+<a href="../classes/Lipsum.html">Lipsum</a> is provided as a plugin for
+Rails.
+</p>
+<pre>
+  script/plugin install git://github.com/gcrofils/lipsum.git
+</pre>
+<p>
+Alternatively it can be installed as a simple library for your projects.
+</p>
+<pre>
+  cp lipsum.rb /where/ever/you/want/lipsum.rb
+  require 'lipsum'
+</pre>
+<h2>Getting Started</h2>
+<p>
+Generate default sentence :
+</p>
+<pre>
+  Lipsum.generate
+</pre>
+<p>
+Generate 50 words :
+</p>
+<pre>
+  Lipsum.generate :words =&gt; 50
+</pre>
+<p>
+Generate 3 paragraphs (about 200 words by paragraph):
+</p>
+<pre>
+  Lipsum.generate :paragraphs =&gt; 3
+</pre>
+<p>
+Generate 457 characters
+</p>
+<pre>
+  Lipsum.generate :characters =&gt; 457
+</pre>
+<h2>Options and statistics</h2>
+<h3>Options</h3>
+<p>
+Options could be set when <tt>new</tt> or <tt>generate</tt> is call.
+</p>
+<pre>
+  l = Lipsum::Base.new :words =&gt; 50
+  l.generate
+</pre>
+<p>
+is equivalent to:
+</p>
+<pre>
+  l = Lipsum::Base.new
+  l.generate :words =&gt; 50
+</pre>
+<p>
+Available options:
+</p>
+<dl>
+<dt>:<tt>words</tt></dt><dd>Number of words to generate (minimum is 5)
+
+</dd>
+<dt>:<tt>paragraphs</tt></dt><dd>Number of paragraphs to generate (minimum is 1)
+
+</dd>
+<dt>:<tt>characters</tt></dt><dd>Number of characters to generate (minimum is 27)
+
+</dd>
+<dt>:<tt>start_with_lipsum</tt></dt><dd>If you want to start your text with &quot;Lorem ipsum dolor sit amet&quot;
+
+</dd>
+<dt>:<tt>type</tt></dt><dd>What is the most important measure ? :words, :paragraphs or :characters
+
+</dd>
+<dt>:<tt>force</tt></dt><dd>if false, try to guess which type you want.
+
+</dd>
+</dl>
+<h3>Statistics</h3>
+<p>
+Example :
+</p>
+<pre>
+  l = Lipsum::Base.new(:paragraphs =&gt; 3, :words =&gt; 200)
+  l.generate
+  l.stats
+  $&gt; {:words=&gt;600, :paragraphs=&gt;3, :characters=&gt;4329}
+</pre>
+<p>
+3 paragraphs need 600 words at least
+</p>
+<pre>
+  l = Lipsum::Base.new(:paragraphs =&gt; 3, :words =&gt; 800)
+  l.generate
+  l.stats
+  $&gt; {:words=&gt;800, :paragraphs=&gt;3, :characters=&gt;5816}
+</pre>
+<h2>Copyright</h2>
+<p>
+Copyright (c) 2010 Gilles Crofils, released under the MIT license
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

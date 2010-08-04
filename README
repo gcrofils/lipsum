@@ -1,0 +1,85 @@
+= Lipsum
+
+Lorem Ipsum ruby generator.
+
+== What is Lorem Ipsum ?
+
+See http://www.lipsum.com/
+
+=== What is Lorem Ipsum Generator ?
+
+This program outputs random sentences based on number of paragraphs, words or characters. 
+
+It's a ruby library wich only needs +active_record+.
+
+== Installation
+
+Lipsum is provided as a plugin for Rails. 
+
+  script/plugin install git://github.com/gcrofils/lipsum.git
+
+Alternatively it can be installed as a simple library for your projects.
+
+  cp lipsum.rb /where/ever/you/want/lipsum.rb
+  require 'lipsum'
+
+== Getting Started
+
+Generate default sentence :
+
+  Lipsum.generate
+  
+Generate 50 words :
+  
+  Lipsum.generate :words => 50
+
+Generate 3 paragraphs (about 200 words by paragraph):
+
+  Lipsum.generate :paragraphs => 3
+
+Generate 457 characters
+
+  Lipsum.generate :characters => 457
+
+== Options and statistics
+
+=== Options
+
+Options could be set when +new+ or +generate+ is call.
+  
+  l = Lipsum::Base.new :words => 50
+  l.generate
+  
+is equivalent to:
+  
+  l = Lipsum::Base.new
+  l.generate :words => 50  
+  
+Available options:
+
+[:+words+] Number of words to generate (minimum is 5)
+[:+paragraphs+] Number of paragraphs to generate (minimum is 1)
+[:+characters+] Number of characters to generate (minimum is 27)
+[:+start_with_lipsum+] If you want to start your text with "Lorem ipsum dolor sit amet"
+[:+type+] What is the most important measure ? :words, :paragraphs or :characters
+[:+force+] if false, try to guess which type you want.
+  
+=== Statistics
+
+Example : 
+
+  l = Lipsum::Base.new(:paragraphs => 3, :words => 200)
+  l.generate
+  l.stats
+  $> {:words=>600, :paragraphs=>3, :characters=>4329}
+  
+3 paragraphs need 600 words at least
+
+  l = Lipsum::Base.new(:paragraphs => 3, :words => 800)
+  l.generate
+  l.stats
+  $> {:words=>800, :paragraphs=>3, :characters=>5816}
+
+== Copyright
+
+Copyright (c) 2010 Gilles Crofils, released under the MIT license
